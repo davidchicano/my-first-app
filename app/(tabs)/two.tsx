@@ -1,13 +1,25 @@
+import { useState } from 'react';
 import { Text, View } from 'react-native';
 
-import EditScreenInfo from '../../components/edit-screen-info';
+import PrimaryButton from '@/components/PrimaryButton';
 
 export default function TabTwoScreen() {
+  const [count, setCount] = useState<number>(0);
+
   return (
     <View className={styles.container}>
-      <Text className={styles.title}>Tab Two</Text>
+      <Text className={styles.title} ellipsizeMode="clip">
+        Tab Two
+      </Text>
       <View className={styles.separator} />
-      <EditScreenInfo path="app/(tabs)/index.tsx" />
+      <Text className="text-2xl ">
+        Count: <Text className="text-slate-500">{count}</Text>
+      </Text>
+      <PrimaryButton
+        label="Increment"
+        onPress={() => setCount(count + 1)}
+        onLongPress={() => setCount(0)}
+      />
     </View>
   );
 }
